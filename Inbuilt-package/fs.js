@@ -33,12 +33,10 @@ const quote3 = "Happy day";
 const [, , noOfFiles] = process.argv;
 console.log(noOfFiles);
 
-// for (let i = 1; i <= noOfFiles; i++) {
-//   fs.writeFile(`./note-${i}.txt`, quote3, (err) => {
-//     if (err) throw err;
-//     console.log(`Completed writing note-${i}.txt`);
-//   });
-// }
+for (let i = 1; i <= noOfFiles; i++) {
+  fs.writeFileSync(`./note-${i}.txt`, quote3);
+  console.log(`Completed writing note-${i}.txt`);
+}
 
 //Task -3
 // /backup/ => create no of files given in node fs.js => sample-1.ppt
@@ -65,6 +63,21 @@ const niceQuote = "Make everyday a little less ordinarily";
 //   console.log("Deleted Successfully")
 // })
 
-fs.readdir("./backup", (err, files) => {
-  console.log("All file names are", files);
-});
+// fs.readdir("./backup", (err, files) => {
+//   console.log("All file names are", files);
+// });
+
+//Task => Delete all the files in backup folder
+
+// fs.readdir("./backup", (err, files) => {
+//   files.forEach((fileName) => {
+//     fs.unlink(`./backup/${fileName}`, (err) => {
+//       console.log("Deleted Successfully", fileName);
+//     });
+//   });
+// });
+
+// writeFile => CallStack => WebApi(whoever finishes writing first) => CallBack Q => CallStack
+
+// fs.writeFile, fs.readFile, fs.appendFile, fs.unlink  => async
+// fs.writeFileSync, fs.readFileSync, fs.appendFileSync, fs.unlinkSync  => sync
